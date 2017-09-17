@@ -16,11 +16,21 @@
       flex-wrap: wrap;
 
       .tag {
-        background: #9f26ef;
+        // background: #9f26ef;
+        border: 2px solid #9f26ef;
         padding: 10px;
-        margin: 20px;
+        margin: 10px 20px;
         border-radius: 7px;
         cursor: pointer;
+        width: 8%;
+        // color: white;
+        transition: 0.5s;
+      }
+
+      .tag:hover {
+        background: #9f26ef;
+        color: white;
+        transition: 0.5s;
       }
     }
   }
