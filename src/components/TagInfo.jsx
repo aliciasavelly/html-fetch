@@ -18,18 +18,12 @@ class TagInfo extends Component {
   }
 
   renderTags() {
-    // {Object.keys(this.state.tags).map( (tag) => (
-    //   <p key={`tag-${tag.toLowerCase()}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
-    // ))}
-    // const { sortedTags } = this.props;
+    const { tags } = this.state;
     return(
       <div className="tags-index">
-        {this.props.sortedTags.map( (tag, idx) => {
-          // debugger;
-          return (
-            <p key={`tag-${idx}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
-          )
-        })}
+        {this.props.sortedTags.map( (tag, idx) => (
+          <p key={`tag-${idx}`} className="tag">{tag.toLowerCase()}: {tags[tag]}</p>
+        ))}
       </div>
     )
   }
