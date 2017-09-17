@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TagInfo from './TagInfo';
 
 class WebsiteSearch extends Component {
   constructor(props) {
@@ -21,12 +22,16 @@ class WebsiteSearch extends Component {
     const website = this.state.website;
     const self = this;
 
-    axios.get(website)
+    axios.get(`http://cors.io/?${website}`)
          .then( responseData => {
            const data = responseData.data;
            const parser = new DOMParser();
            const doc = parser.parseFromString(data, "text/html");
-           self.addTags(doc);
+
+           const tags = {};
+           self.addTags(doc, tags);
+          //  debugger;
+           this.setState({ tags });
          });
   }
 
@@ -34,25 +39,22 @@ class WebsiteSearch extends Component {
     this.setState({ website: e.target.value });
   }
 
-  addTags(doc) {
-    let children = doc.children;
-    let len = children.length;
+  addTags(doc, tags) {
+    const children = doc.children;
+    const len = children.length;
     if (len <= 0) return;
-    let tags = this.state.tags;
 
     for (let i = 0; i < len; i++) {
-      let currentTag = children[i].tagName;
-      let stateCopy = Object.assign({}, this.state);
+      const currentTag = children[i].tagName;
 
       if (tags[currentTag]) {
-        stateCopy.tags[currentTag] += 1;
+        tags[currentTag] += 1;
       } else {
-        stateCopy.tags[currentTag] = 1;
+        tags[currentTag] = 1;
       }
-      this.setState(stateCopy);
-      this.addTags(children[i]);
+
+      this.addTags(children[i], tags);
     }
-    debugger;
   }
 
   render() {
@@ -64,6 +66,7 @@ class WebsiteSearch extends Component {
           </label>
           <input type="submit" value="Search"></input>
         </form>
+        <TagInfo tags={this.state.tags} />
       </div>
     )
   }
