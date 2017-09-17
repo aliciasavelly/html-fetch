@@ -5,7 +5,8 @@ class TagInfo extends Component {
     super(props);
 
     this.state = {
-      tags: {}
+      tags: {},
+      // count: -1
     }
   }
 
@@ -18,8 +19,8 @@ class TagInfo extends Component {
   renderTags() {
     return(
       <div className="tags-index">
-        {Object.keys(this.state.tags).map( (tag, idx) => (
-          <p>{tag.toLowerCase()}: {this.state.tags[tag]}</p>
+        {Object.keys(this.state.tags).map( (tag) => (
+          <p key={`tag-${tag.toLowerCase()}`}>{tag.toLowerCase()}: {this.state.tags[tag]}</p>
         ))}
       </div>
     )
