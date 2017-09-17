@@ -6,12 +6,30 @@
     .App .website-search .tags-index .tag {
       border: 2px solid #9f26ef;
       padding: 10px;
-      margin: 10px 20px;
+      margin-top: 10px;
+      margin-left: 3.75%;
       border-radius: 7px;
       cursor: pointer;
-      width: 8%;
+      width: 10%;
+      box-sizing: border-box;
       transition: 0.5s; }
     .App .website-search .tags-index .tag:hover {
       background: #9f26ef;
       color: white;
       transition: 0.5s; }
+    @media (max-width: 1210px) {
+      .App .website-search .tags-index .tag {
+        width: 14%;
+        margin-left: 5%; } }
+    @media (max-width: 870px) {
+      .App .website-search .tags-index .tag {
+        width: 20%;
+        margin-left: 4%; } }
+    @media (max-width: 600px) {
+      .App .website-search .tags-index .tag {
+        width: 27%;
+        margin-left: 4.75%; } }
+    @media (max-width: 450px) {
+      .App .website-search .tags-index .tag {
+        width: 40%;
+        margin-left: 6.6%; } }

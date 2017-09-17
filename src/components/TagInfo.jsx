@@ -7,6 +7,8 @@ class TagInfo extends Component {
     this.state = {
       tags: {},
     }
+
+    this.renderTags = this.renderTags.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -16,11 +18,18 @@ class TagInfo extends Component {
   }
 
   renderTags() {
+    // {Object.keys(this.state.tags).map( (tag) => (
+    //   <p key={`tag-${tag.toLowerCase()}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
+    // ))}
+    // const { sortedTags } = this.props;
     return(
       <div className="tags-index">
-        {Object.keys(this.state.tags).map( (tag) => (
-          <p key={`tag-${tag.toLowerCase()}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
-        ))}
+        {this.props.sortedTags.map( (tag, idx) => {
+          // debugger;
+          return (
+            <p key={`tag-${idx}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
+          )
+        })}
       </div>
     )
   }

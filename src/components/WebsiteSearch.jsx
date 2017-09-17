@@ -10,7 +10,8 @@ class WebsiteSearch extends Component {
       website: '',
       tags: {},
       error: '',
-      newTags: false
+      newTags: false,
+      sortedTags: []
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +39,11 @@ class WebsiteSearch extends Component {
 
            const tags = {};
            self.addTags(doc, tags);
-           this.setState({ tags, error: '', newTags: true });
+
+
+           let sortedTags = Object.keys(tags).sort( (a, b) => (tags[b]-tags[a]));
+            // debugger;
+           this.setState({ tags, error: '', newTags: true, sortedTags });
          })
          .catch( error => {
            console.log(error);
@@ -69,7 +74,7 @@ class WebsiteSearch extends Component {
   }
 
   render() {
-    const { tags, error } = this.state;
+    const { tags, error, newTags, sortedTags } = this.state;
 
     return(
       <div className="website-search">
@@ -83,7 +88,7 @@ class WebsiteSearch extends Component {
 
         <p className="error">{error}</p>
 
-        <TagInfo tags={tags} newTags={this.state.newTags} />
+        <TagInfo tags={tags} newTags={newTags} sortedTags={sortedTags} />
       </div>
     )
   }
