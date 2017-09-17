@@ -6,12 +6,11 @@ class TagInfo extends Component {
 
     this.state = {
       tags: {},
-      // count: -1
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (Object.keys(newProps.tags).length > 0) {
+    if (newProps.newTags) {
       this.setState({ tags: newProps.tags });
     }
   }
@@ -20,15 +19,13 @@ class TagInfo extends Component {
     return(
       <div className="tags-index">
         {Object.keys(this.state.tags).map( (tag) => (
-          <p key={`tag-${tag.toLowerCase()}`}>{tag.toLowerCase()}: {this.state.tags[tag]}</p>
+          <p key={`tag-${tag.toLowerCase()}`} className="tag">{tag.toLowerCase()}: {this.state.tags[tag]}</p>
         ))}
       </div>
     )
   }
 
   render() {
-    debugger;
-
     return(
       <div>
         {this.renderTags()}

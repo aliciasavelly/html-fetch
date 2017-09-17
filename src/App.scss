@@ -1,3 +1,27 @@
 .App {
   text-align: center;
+
+  .website-search {
+
+    .website-form {
+
+    }
+
+    .error {
+
+    }
+
+    .tags-index {
+      display: flex;
+      flex-wrap: wrap;
+
+      .tag {
+        background: #9f26ef;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+    }
+  }
 }

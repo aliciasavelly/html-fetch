@@ -8,7 +8,9 @@ class WebsiteSearch extends Component {
 
     this.state = {
       website: '',
-      tags: {}
+      tags: {},
+      error: '',
+      newTags: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +20,15 @@ class WebsiteSearch extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // this.setState({ tags: {} });
+    // debugger;
 
-    const website = this.state.website;
+    let website = this.state.website;
     const self = this;
+
+    if (website.slice(0, 3) === "www") {
+      website = "https://" + website;
+    }
 
     axios.get(`http://cors.io/?${website}`)
          .then( responseData => {
@@ -30,13 +38,20 @@ class WebsiteSearch extends Component {
 
            const tags = {};
            self.addTags(doc, tags);
-          //  debugger;
-           this.setState({ tags });
+           this.setState({ tags, error: '', newTags: true });
+         })
+         .catch( error => {
+           console.log(error);
+           this.setState({
+             error: 'Unable to fetch the HTML for this page. Please input the full address for this web page.',
+             tags: {},
+             newTags: true
+           })
          });
   }
 
   updateWebsite(e) {
-    this.setState({ website: e.target.value });
+    this.setState({ website: e.target.value, newTags: false });
   }
 
   addTags(doc, tags) {
@@ -47,26 +62,28 @@ class WebsiteSearch extends Component {
     for (let i = 0; i < len; i++) {
       const currentTag = children[i].tagName;
 
-      if (tags[currentTag]) {
-        tags[currentTag] += 1;
-      } else {
-        tags[currentTag] = 1;
-      }
+      tags[currentTag] = tags[currentTag] ? tags[currentTag] + 1 : 1;
 
       this.addTags(children[i], tags);
     }
   }
 
   render() {
+    const { tags, error } = this.state;
+
     return(
       <div className="website-search">
         <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
           <label>Search website:
             <input type="text" name="website"></input>
           </label>
+
           <input type="submit" value="Search"></input>
         </form>
-        <TagInfo tags={this.state.tags} />
+
+        <p className="error">{error}</p>
+
+        <TagInfo tags={tags} newTags={this.state.newTags} />
       </div>
     )
   }
