@@ -43,7 +43,7 @@
         transition: 0.5s;
       }
 
-      .search:focus{
+      input {
         outline: none;
       }
 
@@ -51,14 +51,13 @@
         .website-form {
           display: flex;
           flex-direction: column;
-          // align-items: flex-start;
-          // justify-content: flex-start;
 
           label {
             display: flex;
             flex-direction: column;
           }
         }
+
         input {
           width: 400px;
         }
@@ -85,7 +84,7 @@
 
     .instructions {
       font-size: 30px;
-      padding: 30px;
+      padding: 50px;
     }
 
     .data-section {

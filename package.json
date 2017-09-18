@@ -20,6 +20,13 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "mark.js": "^8.11.0"
+    "babel-jest": "^21.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^2.0.0",
+    "jest": "^21.1.0",
+    "mark.js": "^8.11.0",
+    "react-test-renderer": "^15.6.1"
   }
 }

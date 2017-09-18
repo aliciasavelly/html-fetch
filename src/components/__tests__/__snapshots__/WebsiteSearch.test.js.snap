@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WebsiteSearch shows website search section 1`] = `
+<div
+  className="website-search"
+>
+  <div
+    className="top-nav"
+  >
+    <img
+      alt="dog-logo"
+      className="fetch-logo"
+      src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png"
+    />
+    <form
+      className="website-form"
+      id="form"
+      onChange={[Function]}
+      onSubmit={[Function]}
+    >
+      <label>
+        Search website:
+        <input
+          className="search"
+          name="website"
+          type="text"
+        />
+      </label>
+      <input
+        id="input-button"
+        type="submit"
+        value="Search"
+      />
+    </form>
+  </div>
+  <p
+    className="error"
+  />
+  <TagInfo
+    handleMark={[Function]}
+    newTags={false}
+    sortedTags={Array []}
+    tags={Object {}}
+  />
+  <p
+    className="data-section"
+  />
+</div>
+`;

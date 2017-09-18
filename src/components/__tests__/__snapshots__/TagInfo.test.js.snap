@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagInfo renders instructions when there are no tags 1`] = `
+<div>
+  <div
+    className="instructions"
+  >
+    Enter the URL of a web page in the search bar above! The page's HTML will be loaded, and you can toggle which tags you'd like to be highlighted in the source code view.
+  </div>
+</div>
+`;

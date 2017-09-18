@@ -14,6 +14,7 @@ export default class TagInfo extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.newTags) {
       this.setState({ tags: newProps.tags });
+      debugger;
     }
   }
 
