@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Mark } from 'mark.js';
+// import { Mark } from 'mark.js';
 
 class TagInfo extends Component {
   constructor(props) {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TagInfo from './TagInfo';
 import _ from 'lodash';
-// import Script from 'react-load-script'
 import { Mark } from 'mark.js';
 
 class WebsiteSearch extends Component {
@@ -127,8 +126,8 @@ class WebsiteSearch extends Component {
 
   handleMark(e) {
     let tag = e.target.innerText.match(/(.+):/)[1];
-    let regex = new RegExp(`<${tag}( [^/>]*/>|/>)`, "g");
-    let regex2 = new RegExp(`<${tag}( [^/>]*>|>)`, "g");
+    // let regex = new RegExp(`<${tag}( [^>]*/>|/>)`, "g");
+    let regex2 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
     let regex3 = new RegExp(`</${tag}>`, "g");
     let mark = new window.Mark(".data-section");
 
@@ -141,7 +140,7 @@ class WebsiteSearch extends Component {
       // mark.markRegExp(regex2);
       // var regex3 = new RegExp(`<${tag}( |[/>])[^/]*[^>]*/>`, "g");
       // mark.markRegExp(regex3);
-      mark.markRegExp(regex);
+      // mark.markRegExp(regex);
       mark.markRegExp(regex2);
       mark.markRegExp(regex3);
 
