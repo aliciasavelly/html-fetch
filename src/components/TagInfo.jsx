@@ -19,8 +19,8 @@ class TagInfo extends Component {
 
   renderTags() {
     const { tags } = this.state;
-    // debugger;
-    if (Object.keys(tags).length == 0) {
+
+    if (Object.keys(tags).length === 0) {
       return(
         <div className="instructions">Enter the URL of a web page in the search bar above! The page's HTML will be loaded, and you can toggle which tags you'd like to be highlighted in the source code view.</div>
       )

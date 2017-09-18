@@ -14,7 +14,8 @@ class WebsiteSearch extends Component {
       error: '',
       newTags: false,
       sortedTags: [],
-      doc: {}
+      doc: {},
+      regex: []
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,8 +39,6 @@ class WebsiteSearch extends Component {
            let data = responseData.data;
            const parser = new DOMParser();
            const doc = parser.parseFromString(data, "text/html");
-          //  data = data.replace(/(<[^/])/g, "\n$1");
-          //  debugger;
 
            this.setState({ doc });
 
@@ -82,27 +81,41 @@ class WebsiteSearch extends Component {
 
   handleMark(e) {
     let tag = e.target.innerText.match(/(.+):/)[1];
-    // let regex = new RegExp(`<${tag}( [^>]*/>|/>)`, "g");
     let regex1 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
     let regex2 = new RegExp(`</${tag}>`, "g");
     let mark = new window.Mark(".data-section");
+    let targetVal = e.target.classList.value;
+    // debugger;
 
     if (e.target.classList.value.slice(0, 6) !== "marked") {
       e.target.classList.value = "marked " + e.target.classList.value;
 
-      // var regex = new RegExp(`<${tag}( |[>])[^>]*>`, "g");
-      // mark.markRegExp(regex);
-      // var regex2 = new RegExp(`</${tag}( |[>])[^>]*>`, "g");
-      // mark.markRegExp(regex2);
-      // var regex3 = new RegExp(`<${tag}( |[/>])[^/]*[^>]*/>`, "g");
-      // mark.markRegExp(regex3);
-      // mark.markRegExp(regex);
       mark.markRegExp(regex1);
       mark.markRegExp(regex2);
+      let newRegex = [regex1, regex2];
+      this.setState({ regex: this.state.regex.concat(newRegex) });
 
     } else {
+      // debugger;
       e.target.classList.value = e.target.classList.value.slice(7);
-      mark.unmark({ element: `${tag}` });
+      // mark.unmark({ element: `${tag}` });
+      mark.unmark();
+
+      let reg = this.state.regex;
+      // let len = reg.length;
+      for (let i = 0; i < reg.length; i++) {
+        console.log(reg);
+        // debugger;
+        let idx = String(reg[i]).indexOf(`${tag}`);
+        if (idx === -1) {
+          // debugger;
+          mark.markRegExp(reg[i]);
+        } else {
+          // debugger;
+          reg.splice(i, 1);
+          i--;
+        }
+      }
     }
 
 
