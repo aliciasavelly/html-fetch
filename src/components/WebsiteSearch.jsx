@@ -34,15 +34,15 @@ export default class WebsiteSearch extends Component {
     let website = this.state.website;
     const self = this;
 
-    if (website.slice(0, 3) === "www") {
-      website = "https://" + website;
+    if (website.slice(0, 3) === 'www') {
+      website = 'https://' + website;
     }
 
     axios.get(`http://cors.io/?${website}`)
          .then( responseData => {
            const data = responseData.data;
            const parser = new DOMParser();
-           const doc = parser.parseFromString(data, "text/html");
+           const doc = parser.parseFromString(data, 'text/html');
 
            const tags = {};
            self.addTags(doc, tags);
@@ -79,13 +79,13 @@ export default class WebsiteSearch extends Component {
 
   handleMark(e) {
     const tag = e.target.innerText.match(/(.+):/)[1];
-    const mark = new window.Mark(".data-section");
-    const regex1 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
-    const regex2 = new RegExp(`</${tag}>`, "g");
+    const mark = new window.Mark('.data-section');
+    const regex1 = new RegExp(`<${tag}( [^>]*>|>)`, 'g');
+    const regex2 = new RegExp(`</${tag}>`, 'g');
     const targetVal = e.target.classList.value;
 
-    if (targetVal.slice(0, 6) !== "marked") {
-      e.target.classList.value = "marked " + targetVal;
+    if (targetVal.slice(0, 6) !== 'marked') {
+      e.target.classList.value = 'marked ' + targetVal;
 
       mark.markRegExp(regex1);
       mark.markRegExp(regex2);
@@ -116,19 +116,20 @@ export default class WebsiteSearch extends Component {
   render() {
     const { tags, error, newTags, sortedTags, data } = this.state;
 
-    return(
+    return (
       <div className="website-search">
         <div className="top-nav">
-          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png"
-               className="fetch-logo"
-               alt="dog-logo" />
+          <img
+            src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png"
+            className="fetch-logo"
+            alt="dog-logo" />
 
-          <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
+          <form className="website-form" id="form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
             <label>Search website:
-              <input type="text" name="website" className="search"></input>
+              <input type="text" name="website" className="search" />
             </label>
 
-            <input type="submit" value="Search"></input>
+            <input type="submit" value="Search" id="input-button" />
           </form>
         </div>
 
@@ -142,6 +143,6 @@ export default class WebsiteSearch extends Component {
 
         <p className="data-section">{data}</p>
       </div>
-    )
+    );
   }
 }

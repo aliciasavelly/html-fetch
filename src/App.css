@@ -7,21 +7,48 @@
     width: 100%;
     padding: 30px;
     align-items: center;
-    background: #00B1B9; }
+    background: #00B1B9;
+    box-sizing: border-box; }
     .App .website-search .top-nav .search {
       width: 400px;
-      font-size: 16px;
       padding: 10px;
       box-sizing: border-box;
-      margin: 0 10px; }
-    .App .website-search .top-nav input {
-      height: 40px; }
+      margin: 0 10px;
+      border: 1px solid #DBDBDB; }
+    .App .website-search .top-nav .search, .App .website-search .top-nav input[type=submit] {
+      font-size: 16px;
+      border-radius: 6px;
+      color: #00666B;
+      height: 45px;
+      -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 1, 0.5);
+      margin-top: 10px; }
+    .App .website-search .top-nav input[type=submit] {
+      padding: 5px 30px;
+      background: #02e2ed;
+      border: 0 none;
+      cursor: pointer;
+      transition: 0.5s; }
+    .App .website-search .top-nav input[type=submit]:hover {
+      background: #00F4FF;
+      transition: 0.5s; }
     .App .website-search .top-nav .search:focus {
       outline: none; }
+    @media (max-width: 825px) {
+      .App .website-search .top-nav .website-form {
+        display: flex;
+        flex-direction: column; }
+        .App .website-search .top-nav .website-form label {
+          display: flex;
+          flex-direction: column; }
+      .App .website-search .top-nav input {
+        width: 400px; } }
+    @media (max-width: 560px) {
+      .App .website-search .top-nav input, .App .website-search .top-nav .search {
+        width: 300px; } }
   .App .website-search .fetch-logo {
     height: 70px; }
   .App .website-search .website-form {
-    margin-right: 230px; }
+    margin-left: 30px; }
   .App .website-search .error {
     font-style: italic; }
   .App .website-search .instructions {
