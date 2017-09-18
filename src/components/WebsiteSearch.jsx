@@ -127,8 +127,8 @@ class WebsiteSearch extends Component {
   handleMark(e) {
     let tag = e.target.innerText.match(/(.+):/)[1];
     // let regex = new RegExp(`<${tag}( [^>]*/>|/>)`, "g");
-    let regex2 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
-    let regex3 = new RegExp(`</${tag}>`, "g");
+    let regex1 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
+    let regex2 = new RegExp(`</${tag}>`, "g");
     let mark = new window.Mark(".data-section");
 
     if (e.target.classList.value.slice(0, 6) !== "marked") {
@@ -141,8 +141,8 @@ class WebsiteSearch extends Component {
       // var regex3 = new RegExp(`<${tag}( |[/>])[^/]*[^>]*/>`, "g");
       // mark.markRegExp(regex3);
       // mark.markRegExp(regex);
+      mark.markRegExp(regex1);
       mark.markRegExp(regex2);
-      mark.markRegExp(regex3);
 
     } else {
       e.target.classList.value = e.target.classList.value.slice(7);
@@ -160,13 +160,17 @@ class WebsiteSearch extends Component {
 
     return(
       <div className="website-search">
-        <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
-          <label>Search website:
-            <input type="text" name="website"></input>
-          </label>
+        <div className="top-nav">
+          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png" className="fetch-logo"/>
+          <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
+            <label>Search website:
+              <input type="text" name="website" className="search"></input>
+            </label>
 
-          <input type="submit" value="Search"></input>
-        </form>
+            <input type="submit" value="Search"></input>
+          </form>
+
+        </div>
 
         <p className="error">{error}</p>
 

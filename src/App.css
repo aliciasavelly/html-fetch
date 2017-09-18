@@ -1,5 +1,25 @@
 .App {
   text-align: center; }
+  .App .website-search .top-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px;
+    align-items: center;
+    background: #D8A6FA; }
+    .App .website-search .top-nav .search {
+      width: 400px;
+      font-size: 18px;
+      padding: 5px;
+      box-sizing: border-box; }
+    .App .website-search .top-nav input {
+      height: 40px; }
+    .App .website-search .top-nav .search:focus {
+      outline: none; }
+  .App .website-search .fetch-logo {
+    height: 70px; }
+  .App .website-search .website-form {
+    margin-right: 230px; }
   .App .website-search .data-section {
     box-sizing: border-box;
     white-space: pre;

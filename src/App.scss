@@ -3,7 +3,36 @@
 
   .website-search {
 
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 30px;
+      align-items: center;
+      background: #D8A6FA;
+
+      .search {
+        width: 400px;
+        font-size: 18px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      input {
+        height: 40px;
+      }
+
+      .search:focus{
+        outline: none;
+      }
+    }
+
+    .fetch-logo {
+      height: 70px;
+    }
+
     .website-form {
+      margin-right: 230px;
 
     }
 
