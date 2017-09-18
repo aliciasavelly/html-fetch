@@ -85,7 +85,6 @@ class WebsiteSearch extends Component {
     let regex2 = new RegExp(`</${tag}>`, "g");
     let mark = new window.Mark(".data-section");
     let targetVal = e.target.classList.value;
-    // debugger;
 
     if (e.target.classList.value.slice(0, 6) !== "marked") {
       e.target.classList.value = "marked " + e.target.classList.value;
@@ -96,32 +95,24 @@ class WebsiteSearch extends Component {
       this.setState({ regex: this.state.regex.concat(newRegex) });
 
     } else {
-      // debugger;
       e.target.classList.value = e.target.classList.value.slice(7);
       // mark.unmark({ element: `${tag}` });
       mark.unmark();
 
       let reg = this.state.regex;
-      // let len = reg.length;
+
       for (let i = 0; i < reg.length; i++) {
-        console.log(reg);
-        // debugger;
         let idx = String(reg[i]).indexOf(`${tag}`);
         if (idx === -1) {
-          // debugger;
           mark.markRegExp(reg[i]);
         } else {
-          // debugger;
           reg.splice(i, 1);
           i--;
         }
       }
+
+      this.setState({regex: reg });
     }
-
-
-    // let data = this.state.data;
-    // data = data.replace(regex, `<span className="marked"><${tag}></span>`);
-    // this.setState({ data });
   }
 
   render() {

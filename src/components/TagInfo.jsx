@@ -5,7 +5,7 @@ class TagInfo extends Component {
     super(props);
 
     this.state = {
-      tags: {},
+      tags: {}
     }
 
     this.renderTags = this.renderTags.bind(this);
