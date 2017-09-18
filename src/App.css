@@ -75,13 +75,11 @@
       width: 10%;
       box-sizing: border-box;
       transition: 0.25s; }
-    .App .website-search .tags-index .tag:hover {
-      background: #00B1B9;
-      color: white;
-      transition: 0.25s; }
-    .App .website-search .tags-index .marked {
+    .App .website-search .tags-index .tag:hover, .App .website-search .tags-index .marked {
       background: #00B1B9;
       color: white; }
+    .App .website-search .tags-index .tag:hover {
+      transition: 0.25s; }
     @media (max-width: 1210px) {
       .App .website-search .tags-index .tag {
         width: 14%;

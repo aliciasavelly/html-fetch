@@ -19,7 +19,7 @@ exports[`WebsiteSearch shows website search section 1`] = `
       onSubmit={[Function]}
     >
       <label>
-        Search website:
+        Search website:  
         <input
           className="search"
           name="website"

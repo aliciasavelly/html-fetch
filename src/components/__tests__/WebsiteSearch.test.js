@@ -20,8 +20,9 @@ describe('WebsiteSearch', () => {
 
   it('changes website prop when user types in search bar', () => {
     const websiteInput = component.find('input[type="text"]');
-    websiteInput.simulate('change', { target: { value: 'https://aliciasavelly.github.io/portfolio/' }});
+    const site = 'https://aliciasavelly.github.io/portfolio/';
+    websiteInput.simulate('change', { target: { value: site }});
 
-    expect(component.state().website).toEqual('https://aliciasavelly.github.io/portfolio/');
+    expect(component.state().website).toEqual(site);
   });
 });

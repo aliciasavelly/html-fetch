@@ -102,7 +102,6 @@
       flex-wrap: wrap;
 
       .tag {
-        // background: #00B1B9;
         border: 2px solid #00B1B9;
         padding: 10px;
         margin-top: 10px;
@@ -110,20 +109,17 @@
         border-radius: 7px;
         cursor: pointer;
         width: 10%;
-        // color: white;
         box-sizing: border-box;
         transition: 0.25s;
       }
 
-      .tag:hover {
+      .tag:hover, .marked {
         background: #00B1B9;
         color: white;
-        transition: 0.25s;
       }
 
-      .marked {
-        background: #00B1B9;
-        color: white;
+      .tag:hover {
+        transition: 0.25s;
       }
 
       @media (max-width: 1210px) {
