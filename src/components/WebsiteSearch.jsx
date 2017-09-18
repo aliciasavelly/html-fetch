@@ -18,10 +18,14 @@ class WebsiteSearch extends Component {
       regex: []
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.updateWebsite = this.updateWebsite.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.addTags = this.addTags.bind(this);
     this.handleMark = this.handleMark.bind(this);
+  }
+
+  updateWebsite(e) {
+    this.setState({ website: e.target.value, newTags: false });
   }
 
   handleSubmit(e) {
@@ -59,10 +63,6 @@ class WebsiteSearch extends Component {
              data: ''
            })
          });
-  }
-
-  updateWebsite(e) {
-    this.setState({ website: e.target.value, newTags: false });
   }
 
   addTags(doc, tags) {
@@ -121,7 +121,10 @@ class WebsiteSearch extends Component {
     return(
       <div className="website-search">
         <div className="top-nav">
-          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png" className="fetch-logo" alt="dog-logo" />
+          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png"
+               className="fetch-logo"
+               alt="dog-logo" />
+
           <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
             <label>Search website:
               <input type="text" name="website" className="search"></input>
@@ -129,12 +132,14 @@ class WebsiteSearch extends Component {
 
             <input type="submit" value="Search"></input>
           </form>
-
         </div>
 
         <p className="error">{error}</p>
 
-        <TagInfo tags={tags} newTags={newTags} sortedTags={sortedTags} handleMark={this.handleMark} />
+        <TagInfo tags={tags}
+                 newTags={newTags}
+                 sortedTags={sortedTags}
+                 handleMark={this.handleMark} />
 
         <p className="data-section">{data}</p>
       </div>
