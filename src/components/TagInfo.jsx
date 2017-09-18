@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Mark } from 'mark.js';
 
 class TagInfo extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class TagInfo extends Component {
     return(
       <div className="tags-index">
         {this.props.sortedTags.map( (tag, idx) => (
-          <p key={`tag-${idx}`} className="tag">{tag.toLowerCase()}: {tags[tag]}</p>
+          <p key={`tag-${idx}`} className="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
         ))}
       </div>
     )

@@ -21,6 +21,9 @@
       width: 10%;
       box-sizing: border-box;
       transition: 0.5s; }
+    .App .website-search .tags-index .marked {
+      background: #9f26ef;
+      color: white; }
     .App .website-search .tags-index .tag:hover {
       background: #9f26ef;
       color: white;
@@ -41,3 +44,7 @@
       .App .website-search .tags-index .tag {
         width: 40%;
         margin-left: 6.6%; } }
+
+mark {
+  color: #ffffff;
+  background: #AF4EF1; }

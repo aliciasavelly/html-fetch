@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TagInfo from './TagInfo';
 import _ from 'lodash';
+// import Script from 'react-load-script'
+import { Mark } from 'mark.js';
 
 class WebsiteSearch extends Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class WebsiteSearch extends Component {
     this.updateWebsite = this.updateWebsite.bind(this);
     this.addTags = this.addTags.bind(this);
     this.renderData = this.renderData.bind(this);
+    this.handleMark = this.handleMark.bind(this);
   }
 
   // renderOther() {
@@ -68,7 +71,7 @@ class WebsiteSearch extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    // debugger;
     let website = this.state.website;
     const self = this;
 
@@ -122,6 +125,37 @@ class WebsiteSearch extends Component {
     }
   }
 
+  handleMark(e) {
+    let tag = e.target.innerText.match(/(.+):/)[1];
+    let regex = new RegExp(`<${tag}( [^/>]*/>|/>)`, "g");
+    let regex2 = new RegExp(`<${tag}( [^/>]*>|>)`, "g");
+    let regex3 = new RegExp(`</${tag}>`, "g");
+    let mark = new window.Mark(".data-section");
+
+    if (e.target.classList.value.slice(0, 6) !== "marked") {
+      e.target.classList.value = "marked " + e.target.classList.value;
+
+      // var regex = new RegExp(`<${tag}( |[>])[^>]*>`, "g");
+      // mark.markRegExp(regex);
+      // var regex2 = new RegExp(`</${tag}( |[>])[^>]*>`, "g");
+      // mark.markRegExp(regex2);
+      // var regex3 = new RegExp(`<${tag}( |[/>])[^/]*[^>]*/>`, "g");
+      // mark.markRegExp(regex3);
+      mark.markRegExp(regex);
+      mark.markRegExp(regex2);
+      mark.markRegExp(regex3);
+
+    } else {
+      e.target.classList.value = e.target.classList.value.slice(7);
+      mark.unmark({ element: `${tag}` });
+    }
+
+
+    // let data = this.state.data;
+    // data = data.replace(regex, `<span className="marked"><${tag}></span>`);
+    // this.setState({ data });
+  }
+
   render() {
     const { tags, error, newTags, sortedTags, data } = this.state;
 
@@ -137,7 +171,7 @@ class WebsiteSearch extends Component {
 
         <p className="error">{error}</p>
 
-        <TagInfo tags={tags} newTags={newTags} sortedTags={sortedTags} />
+        <TagInfo tags={tags} newTags={newTags} sortedTags={sortedTags} handleMark={this.handleMark} />
 
         <p className="data-section">{data}</p>
       </div>

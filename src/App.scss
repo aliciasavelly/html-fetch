@@ -39,6 +39,11 @@
         transition: 0.5s;
       }
 
+      .marked {
+        background: #9f26ef;
+        color: white;
+      }
+
       .tag:hover {
         background: #9f26ef;
         color: white;
@@ -74,4 +79,9 @@
       }
     }
   }
+}
+
+mark{
+  color: #ffffff;
+    background: #AF4EF1;
 }
