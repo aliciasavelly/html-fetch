@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TagInfo extends Component {
+export default class TagInfo extends Component {
   constructor(props) {
     super(props);
 
@@ -43,5 +43,3 @@ class TagInfo extends Component {
     )
   }
 }
-
-export default TagInfo;

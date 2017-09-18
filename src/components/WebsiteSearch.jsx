@@ -4,17 +4,17 @@ import TagInfo from './TagInfo';
 import _ from 'lodash';
 import { Mark } from 'mark.js';
 
-class WebsiteSearch extends Component {
+export default class WebsiteSearch extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       website: '',
       tags: {},
+      sortedTags: [],
+      data: '',
       error: '',
       newTags: false,
-      sortedTags: [],
-      doc: {},
       regex: []
     }
 
@@ -40,28 +40,26 @@ class WebsiteSearch extends Component {
 
     axios.get(`http://cors.io/?${website}`)
          .then( responseData => {
-           let data = responseData.data;
+           const data = responseData.data;
            const parser = new DOMParser();
            const doc = parser.parseFromString(data, "text/html");
-
-           this.setState({ doc });
 
            const tags = {};
            self.addTags(doc, tags);
 
            let sortedTags = Object.keys(tags).sort( (a, b) => (tags[b]-tags[a]));
 
-           this.setState({ tags, error: '', newTags: true, sortedTags, data });
+           this.setState({ tags, sortedTags, data, error: '', newTags: true });
          })
          .catch( error => {
            console.log(error);
            this.setState({
-             error: 'Unable to fetch the HTML for this page. Please input the full address for this web page.',
              tags: {},
-             newTags: true,
-             sortedTags: {},
-             data: ''
-           })
+             sortedTags: [],
+             data: '',
+             error: 'Unable to fetch the HTML for this page. Please input the full address for this web page.',
+             newTags: true
+           });
          });
   }
 
@@ -80,29 +78,29 @@ class WebsiteSearch extends Component {
   }
 
   handleMark(e) {
-    let tag = e.target.innerText.match(/(.+):/)[1];
-    let regex1 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
-    let regex2 = new RegExp(`</${tag}>`, "g");
-    let mark = new window.Mark(".data-section");
-    let targetVal = e.target.classList.value;
+    const tag = e.target.innerText.match(/(.+):/)[1];
+    const mark = new window.Mark(".data-section");
+    const regex1 = new RegExp(`<${tag}( [^>]*>|>)`, "g");
+    const regex2 = new RegExp(`</${tag}>`, "g");
+    const targetVal = e.target.classList.value;
 
-    if (e.target.classList.value.slice(0, 6) !== "marked") {
-      e.target.classList.value = "marked " + e.target.classList.value;
+    if (targetVal.slice(0, 6) !== "marked") {
+      e.target.classList.value = "marked " + targetVal;
 
       mark.markRegExp(regex1);
       mark.markRegExp(regex2);
-      let newRegex = [regex1, regex2];
+
+      const newRegex = [regex1, regex2];
       this.setState({ regex: this.state.regex.concat(newRegex) });
 
     } else {
-      e.target.classList.value = e.target.classList.value.slice(7);
-      // mark.unmark({ element: `${tag}` });
+      e.target.classList.value = targetVal.slice(7);
+
       mark.unmark();
 
-      let reg = this.state.regex;
-
+      const reg = this.state.regex;
       for (let i = 0; i < reg.length; i++) {
-        let idx = String(reg[i]).indexOf(`${tag}`);
+        const idx = String(reg[i]).indexOf(`${tag}`);
         if (idx === -1) {
           mark.markRegExp(reg[i]);
         } else {
@@ -136,15 +134,14 @@ class WebsiteSearch extends Component {
 
         <p className="error">{error}</p>
 
-        <TagInfo tags={tags}
-                 newTags={newTags}
-                 sortedTags={sortedTags}
-                 handleMark={this.handleMark} />
+        <TagInfo
+          tags={tags}
+          newTags={newTags}
+          sortedTags={sortedTags}
+          handleMark={this.handleMark} />
 
         <p className="data-section">{data}</p>
       </div>
     )
   }
 }
-
-export default WebsiteSearch;
