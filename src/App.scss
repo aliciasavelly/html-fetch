@@ -112,18 +112,18 @@
         width: 10%;
         // color: white;
         box-sizing: border-box;
-        transition: 0.5s;
-      }
-
-      .marked {
-        background: #00B1B9;
-        color: white;
+        transition: 0.25s;
       }
 
       .tag:hover {
         background: #00B1B9;
         color: white;
-        transition: 0.5s;
+        transition: 0.25s;
+      }
+
+      .marked {
+        background: #00B1B9;
+        color: white;
       }
 
       @media (max-width: 1210px) {

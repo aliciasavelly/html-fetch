@@ -14,7 +14,6 @@ export default class TagInfo extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.newTags) {
       this.setState({ tags: newProps.tags });
-      debugger;
     }
   }
 
@@ -31,8 +30,8 @@ export default class TagInfo extends Component {
     } else {
       return (
         <div className="tags-index">
-          {this.props.sortedTags.map( (tag, idx) => (
-            <p key={`tag-${idx}`} className="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
+          {Object.keys(tags).map( (tag, idx) => (
+            <p key={`tag-${idx}`} className="tag" id="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
           ))}
         </div>
       );

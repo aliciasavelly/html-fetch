@@ -74,14 +74,14 @@
       cursor: pointer;
       width: 10%;
       box-sizing: border-box;
-      transition: 0.5s; }
-    .App .website-search .tags-index .marked {
-      background: #00B1B9;
-      color: white; }
+      transition: 0.25s; }
     .App .website-search .tags-index .tag:hover {
       background: #00B1B9;
       color: white;
-      transition: 0.5s; }
+      transition: 0.25s; }
+    .App .website-search .tags-index .marked {
+      background: #00B1B9;
+      color: white; }
     @media (max-width: 1210px) {
       .App .website-search .tags-index .tag {
         width: 14%;

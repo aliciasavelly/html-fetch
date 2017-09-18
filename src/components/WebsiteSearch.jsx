@@ -49,7 +49,7 @@ export default class WebsiteSearch extends Component {
 
            let sortedTags = Object.keys(tags).sort( (a, b) => (tags[b]-tags[a]));
 
-           this.setState({ tags, sortedTags, data, error: '', newTags: true });
+           this.setState({ tags, sortedTags, data, error: '', newTags: true, regex: [] });
          })
          .catch( error => {
            console.log(error);
@@ -125,7 +125,7 @@ export default class WebsiteSearch extends Component {
             alt="dog-logo" />
 
           <form className="website-form" id="form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
-            <label>Search website:
+            <label>Search website:&nbsp;&nbsp;
               <input type="text" name="website" className="search" />
             </label>
 
