@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: #00666B;
 
   .website-search {
 
@@ -9,7 +10,7 @@
       width: 100%;
       padding: 30px;
       align-items: center;
-      background: #D8A6FA;
+      background: #00B1B9;
 
       .search {
         width: 400px;
@@ -38,7 +39,12 @@
     }
 
     .error {
+      font-style: italic;
+    }
 
+    .instructions {
+      font-size: 30px;
+      padding: 30px;
     }
 
     .data-section {
@@ -56,8 +62,8 @@
       flex-wrap: wrap;
 
       .tag {
-        // background: #9f26ef;
-        border: 2px solid #9f26ef;
+        // background: #00B1B9;
+        border: 2px solid #00B1B9;
         padding: 10px;
         margin-top: 10px;
         margin-left: 3.75%;
@@ -70,12 +76,12 @@
       }
 
       .marked {
-        background: #9f26ef;
+        background: #00B1B9;
         color: white;
       }
 
       .tag:hover {
-        background: #9f26ef;
+        background: #00B1B9;
         color: white;
         transition: 0.5s;
       }
@@ -113,5 +119,6 @@
 
 mark{
   color: #ffffff;
-    background: #AF4EF1;
+  background: #00d9e2;
+  // font-size: 22px;
 }

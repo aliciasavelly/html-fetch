@@ -20,57 +20,12 @@ class WebsiteSearch extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateWebsite = this.updateWebsite.bind(this);
     this.addTags = this.addTags.bind(this);
-    this.renderData = this.renderData.bind(this);
     this.handleMark = this.handleMark.bind(this);
-  }
-
-  // renderOther() {
-  //   return (
-  //     <div>OTHER!!</div>
-  //   );
-  // }
-
-  renderData(doc) {
-    // debugger;
-    if (!doc.children) {
-      return <div></div>;
-    }
-
-    // const { doc } = this.state;
-    const children = doc.children;
-    const len = children.length;
-    if (len <= 0) return;
-    // debugger;
-
-    const jsx = (<div className="html-data-content">
-                   {_.times(len, i => (
-                      <div key={`${i}`} className="outer">
-                        <div key={`tag-${children[i].tagName}-${i}`} className={`${children[i].tagName}`}>{`<${children[i].tagName}>${children[i].content}`}</div>
-                        {this.renderData(children[i])}
-                        <div key={`tag-${children[i].tagName}-${i}-end`}>{`</${children[i].tagName}>`}</div>
-
-                      </div>
-                     )
-                   )}
-                 </div>);
-                 //  this.renderData(children[i]);
-    // debugger;
-    // return;
-
-    // for (let i = 0; i < len; i++) {
-    //   // const currentTag = children[i].tagName;
-    //   //
-    //   // tags[currentTag] = tags[currentTag] ? tags[currentTag] + 1 : 1;
-    //   //
-    //   // this.addTags(children[i], tags);
-    // }
-
-    return jsx;
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger;
+
     let website = this.state.website;
     const self = this;
 
@@ -90,7 +45,6 @@ class WebsiteSearch extends Component {
 
            const tags = {};
            self.addTags(doc, tags);
-          //  self.renderData(doc);
 
            let sortedTags = Object.keys(tags).sort( (a, b) => (tags[b]-tags[a]));
 
@@ -101,7 +55,9 @@ class WebsiteSearch extends Component {
            this.setState({
              error: 'Unable to fetch the HTML for this page. Please input the full address for this web page.',
              tags: {},
-             newTags: true
+             newTags: true,
+             sortedTags: {},
+             data: ''
            })
          });
   }
@@ -161,7 +117,7 @@ class WebsiteSearch extends Component {
     return(
       <div className="website-search">
         <div className="top-nav">
-          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png" className="fetch-logo"/>
+          <img src="https://res.cloudinary.com/sharebnb/image/upload/v1505718841/favicon_nysktn.png" className="fetch-logo" alt="dog-logo" />
           <form className="website-form" onSubmit={this.handleSubmit} onChange={this.updateWebsite}>
             <label>Search website:
               <input type="text" name="website" className="search"></input>

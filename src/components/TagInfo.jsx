@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Mark } from 'mark.js';
 
 class TagInfo extends Component {
   constructor(props) {
@@ -20,13 +19,20 @@ class TagInfo extends Component {
 
   renderTags() {
     const { tags } = this.state;
-    return(
-      <div className="tags-index">
-        {this.props.sortedTags.map( (tag, idx) => (
-          <p key={`tag-${idx}`} className="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
-        ))}
-      </div>
-    )
+    // debugger;
+    if (Object.keys(tags).length == 0) {
+      return(
+        <div className="instructions">Enter the URL of a web page in the search bar above! The page's HTML will be loaded, and you can toggle which tags you'd like to be highlighted in the source code view.</div>
+      )
+    } else {
+      return(
+        <div className="tags-index">
+          {this.props.sortedTags.map( (tag, idx) => (
+            <p key={`tag-${idx}`} className="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
+          ))}
+        </div>
+      )
+    }
   }
 
   render() {

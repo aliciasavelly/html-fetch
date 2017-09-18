@@ -1,12 +1,13 @@
 .App {
-  text-align: center; }
+  text-align: center;
+  color: #00666B; }
   .App .website-search .top-nav {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 30px;
     align-items: center;
-    background: #D8A6FA; }
+    background: #00B1B9; }
     .App .website-search .top-nav .search {
       width: 400px;
       font-size: 16px;
@@ -21,6 +22,11 @@
     height: 70px; }
   .App .website-search .website-form {
     margin-right: 230px; }
+  .App .website-search .error {
+    font-style: italic; }
+  .App .website-search .instructions {
+    font-size: 30px;
+    padding: 30px; }
   .App .website-search .data-section {
     box-sizing: border-box;
     white-space: pre;
@@ -33,7 +39,7 @@
     display: flex;
     flex-wrap: wrap; }
     .App .website-search .tags-index .tag {
-      border: 2px solid #9f26ef;
+      border: 2px solid #00B1B9;
       padding: 10px;
       margin-top: 10px;
       margin-left: 3.75%;
@@ -43,10 +49,10 @@
       box-sizing: border-box;
       transition: 0.5s; }
     .App .website-search .tags-index .marked {
-      background: #9f26ef;
+      background: #00B1B9;
       color: white; }
     .App .website-search .tags-index .tag:hover {
-      background: #9f26ef;
+      background: #00B1B9;
       color: white;
       transition: 0.5s; }
     @media (max-width: 1210px) {
@@ -68,4 +74,4 @@
 
 mark {
   color: #ffffff;
-  background: #AF4EF1; }
+  background: #00d9e2; }
