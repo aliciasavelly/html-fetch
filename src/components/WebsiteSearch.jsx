@@ -38,7 +38,7 @@ export default class WebsiteSearch extends Component {
       website = 'https://' + website;
     }
 
-    axios.get(`http://cors.io/?${website}`)
+    axios.get(`https://cors.io/?${website}`)
          .then( responseData => {
            const data = responseData.data;
            const parser = new DOMParser();

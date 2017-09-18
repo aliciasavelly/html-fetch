@@ -13,9 +13,9 @@
       width: 400px;
       padding: 10px;
       box-sizing: border-box;
-      margin: 0 10px;
       border: 1px solid #DBDBDB; }
     .App .website-search .top-nav .search, .App .website-search .top-nav input[type=submit] {
+      margin: 0 5px;
       font-size: 16px;
       border-radius: 6px;
       color: #00666B;
