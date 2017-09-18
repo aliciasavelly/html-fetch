@@ -9,9 +9,10 @@
     background: #D8A6FA; }
     .App .website-search .top-nav .search {
       width: 400px;
-      font-size: 18px;
-      padding: 5px;
-      box-sizing: border-box; }
+      font-size: 16px;
+      padding: 10px;
+      box-sizing: border-box;
+      margin: 0 10px; }
     .App .website-search .top-nav input {
       height: 40px; }
     .App .website-search .top-nav .search:focus {
