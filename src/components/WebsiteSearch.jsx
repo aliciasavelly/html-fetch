@@ -114,7 +114,7 @@ export default class WebsiteSearch extends Component {
   }
 
   render() {
-    const { tags, error, newTags, sortedTags, data } = this.state;
+    const { website, tags, error, newTags, sortedTags, data } = this.state;
 
     return (
       <div className="website-search">
@@ -139,7 +139,8 @@ export default class WebsiteSearch extends Component {
           tags={tags}
           newTags={newTags}
           sortedTags={sortedTags}
-          handleMark={this.handleMark} />
+          handleMark={this.handleMark}
+          website={website} />
 
         <p className="data-section">{data}</p>
       </div>

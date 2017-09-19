@@ -17,6 +17,21 @@ export default class TagInfo extends Component {
     }
   }
 
+  hashWebsite() {
+    let hash = 0, i, chr;
+    let site = this.props.website;
+
+    if (site.length === 0) return hash;
+
+    for (i = 0; i < site.length; i++) {
+      chr   = site.charCodeAt(i);
+      hash  = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+
+    return hash;
+  };
+
   renderTags() {
     const { tags } = this.state;
 
@@ -31,7 +46,7 @@ export default class TagInfo extends Component {
       return (
         <div className="tags-index">
           {Object.keys(tags).map( (tag, idx) => (
-            <p key={`tag-${idx}`} className="tag" id="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
+            <p key={`tag-${idx}-${this.hashWebsite()}`} className="tag" id="tag" onClick={this.props.handleMark}>{tag.toLowerCase()}: {tags[tag]}</p>
           ))}
         </div>
       );
