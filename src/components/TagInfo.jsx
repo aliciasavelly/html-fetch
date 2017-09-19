@@ -14,12 +14,13 @@ export default class TagInfo extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.newTags) {
       this.setState({ tags: newProps.tags });
+      this.setState({ website: newProps.website });
     }
   }
 
   hashWebsite() {
     let hash = 0, i, chr;
-    let site = this.props.website;
+    let site = this.state.website;
 
     if (site.length === 0) return hash;
 
