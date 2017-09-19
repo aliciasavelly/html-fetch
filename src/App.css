@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  color: #00666B; }
+  color: #00666B;
+  font-family: 'Raleway', sans-serif; }
   .App .website-search .top-nav {
     display: flex;
     justify-content: space-between;
